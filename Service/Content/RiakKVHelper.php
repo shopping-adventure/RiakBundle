@@ -44,7 +44,7 @@ class RiakKVHelper
                             $linksHeader = $headers["link"];
                             foreach($linksHeader->toArray() as $linkHeader) {
                                 $matches = array();
-                                if (preg_match('/<(riak/.*/.* )>; riaktag="(.*)"/', $linkHeader, $matches)) {
+                                if (preg_match('/<(riak\/.*\/.* )>; riaktag="(.*)"/', $linkHeader, $matches)) {
                                     $riakKVObject->addRiakLink(new Link($matches[1], $matches[2]));
                                 }
                             }
