@@ -282,7 +282,8 @@ class RiakKVServiceClient extends BaseServiceClient
                     $data->getHeaderBag()->set("X-Riak-Vclock", $vectorClock);
                 }
                 $linkValue = "";
-                foreach($content->getRiakLinks() as $link) {
+                $links = $content->getRiakLinks() or $links = [];
+                foreach($links as $link) {
                     $linkValue .= (!empty($linkValue) ? ", " : "") . "<" . $link->getKv() . "> riaktag=\"" . $link->getRiakTag() . "\"";
                 }
                 if (!empty($linkValue)) {
